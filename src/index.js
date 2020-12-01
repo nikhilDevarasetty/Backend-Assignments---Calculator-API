@@ -67,7 +67,7 @@ app.post("/divide", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 / num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send({ message: "Invalid data types" });
+    res.send({ status: "error", message: "Invalid data types" });
   } else if (num2 === 0) {
     res.status(404).send({ message: "Cannot divide by zero" });
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
