@@ -18,68 +18,88 @@ app.get("/", (req, res) => {
 app.post("/add", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 + num2;
+  let status = "error",
+    message;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(400).send({ message: "Invalid data types" });
+    message = "Invalid data types";
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(400).send({ message: "Underflow" });
+    message = "Underflow";
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(400).send({ message: "Overflow" });
+    message = "Overflow";
   } else {
-    res.send({
-      message: "the sum of given two numbers",
-      sum: result,
-    });
+    status = "success";
+    message = "the sum of given two numbers";
   }
+  res.send({
+    status: status,
+    message: message,
+    sum: result,
+  });
 });
 app.post("/sub", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 - num2;
+  let status = "error",
+    message;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send({ message: "Invalid data types" });
+    message = "Invalid data types";
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send({ message: "Underflow" });
+    message = "Underflow";
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send({ message: "Overflow" });
+    message = "Overflow";
   } else {
-    res.send({
-      message: "the difference of given two numbers",
-      difference: result,
-    });
+    status = "success";
+    message = "the difference of given two numbers";
   }
+  res.send({
+    status: status,
+    message: message,
+    difference: result,
+  });
 });
 app.post("/multiply", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 * num2;
+  let status = "error",
+    message;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send({ message: "Invalid data types" });
+    message = "Invalid data types";
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send({ message: "Underflow" });
+    message = "Underflow";
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send({ message: "Overflow" });
+    message = "Overflow";
   } else {
-    res.send({
-      message: "The product of given numbers",
-      result: result,
-    });
+    status = "success";
+    message = "The product of given numbers";
   }
+  res.send({
+    status: status,
+    message: message,
+    result: result,
+  });
 });
 app.post("/divide", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 / num2;
+  let status = "error",
+    message;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.send({ status: "error", message: "Invalid data types" });
+    message = "Invalid data types";
   } else if (num2 === 0) {
-    res.send({ status: "error", message: "Cannot divide by zero" });
+    message = "Cannot divide by zero";
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send({ message: "Underflow" });
+    message = "Underflow";
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send({ message: "Overflow" });
+    message = "Overflow";
   } else {
-    res.send({
-      message: "The division of given numbers",
-      result: result,
-    });
+    status = "success";
+    message = "The division of given numbers";
   }
+  res.send({
+    status: status,
+    message: message,
+    result: result,
+  });
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
