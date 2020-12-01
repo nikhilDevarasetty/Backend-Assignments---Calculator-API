@@ -19,11 +19,11 @@ app.post("/add", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 + num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(400).send({ message: "Invalid data types", sum: result });
+    res.status(400).send({ message: "Invalid data types" });
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(400).send({ message: "Underflow", sum: result });
+    res.status(400).send({ message: "Underflow" });
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(400).send({ message: "Overflow", sum: result });
+    res.status(400).send({ message: "Overflow" });
   } else {
     res.send({
       message: "the sum of given two numbers",
