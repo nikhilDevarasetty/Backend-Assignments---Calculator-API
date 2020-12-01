@@ -43,7 +43,7 @@ app.post("/sub", (req, res) => {
   } else {
     res.send({
       message: "the difference of given two numbers",
-      sum: result,
+      difference: result,
     });
   }
 });
@@ -59,7 +59,7 @@ app.post("/multiply", (req, res) => {
   } else {
     res.send({
       message: "The product of given numbers",
-      sum: result,
+      result: result,
     });
   }
 });
@@ -77,7 +77,7 @@ app.post("/divide", (req, res) => {
   } else {
     res.send({
       message: "The division of given numbers",
-      sum: result,
+      result: result,
     });
   }
 });
