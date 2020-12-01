@@ -19,11 +19,11 @@ app.post("/add", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 + num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send("Invalid data types");
+    res.status(500).send({ message: "Invalid data types" });
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send("Underflow");
+    res.status(500).send({ message: "Underflow" });
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send("Overflow");
+    res.status(500).send({ message: "Overflow" });
   } else {
     res.send({
       message: "the sum of given two numbers",
@@ -35,11 +35,11 @@ app.post("/sub", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 - num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send("Invalid data types");
+    res.status(500).send({ message: "Invalid data types" });
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send("Underflow");
+    res.status(500).send({ message: "Underflow" });
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send("Overflow");
+    res.status(500).send({ message: "Overflow" });
   } else {
     res.send({
       message: "the difference of given two numbers",
@@ -51,11 +51,11 @@ app.post("/multiply", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 * num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send("Invalid data types");
+    res.status(500).send({ message: "Invalid data types" });
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send("Underflow");
+    res.status(500).send({ message: "Underflow" });
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send("Overflow");
+    res.status(500).send({ message: "Overflow" });
   } else {
     res.send({
       message: "The product of given numbers",
@@ -67,13 +67,13 @@ app.post("/divide", (req, res) => {
   const { num1, num2 } = req.body;
   const result = num1 / num2;
   if (typeof num1 === "string" || typeof num2 === "string") {
-    res.status(500).send("Invalid data types");
+    res.status(500).send({ message: "Invalid data types" });
   } else if (num2 === 0) {
-    res.status(500).send("Cannot divide by zero");
+    res.status(500).send({ message: "Cannot divide by zero" });
   } else if (num1 < -threshold || num2 < -threshold || result < -threshold) {
-    res.status(500).send("Underflow");
+    res.status(500).send({ message: "Underflow" });
   } else if (num1 > threshold || num2 > threshold || result > threshold) {
-    res.status(500).send("Overflow");
+    res.status(500).send({ message: "Overflow" });
   } else {
     res.send({
       message: "The division of given numbers",
